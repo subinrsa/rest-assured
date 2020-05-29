@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/automation.iml" filepath="$PROJECT_DIR$/.idea/modules/automation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/rest-assured.iml" filepath="$PROJECT_DIR$/.idea/modules/rest-assured.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/rest-assured.test.iml" filepath="$PROJECT_DIR$/.idea/modules/rest-assured.test.iml" />
     </modules>
   </component>
 </project>
