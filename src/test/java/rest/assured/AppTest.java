@@ -4,12 +4,21 @@
 package rest.assured;
 
 import org.junit.Test;
+<<<<<<< HEAD
 
 import static org.hamcrest.CoreMatchers.is;
+=======
+>>>>>>> df74019f9e8047713481ff6d8f699f46cc748655
 import static org.junit.Assert.*;
 
 public class AppTest {
     @Test public void testAppHasAGreeting() {
+<<<<<<< HEAD
         assertThat(1, is(1));
             }
+=======
+        App classUnderTest = new App();
+        assertNotNull("app should have a greeting", classUnderTest.getGreeting());
+    }
+>>>>>>> df74019f9e8047713481ff6d8f699f46cc748655
 }

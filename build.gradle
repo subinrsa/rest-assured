@@ -9,7 +9,18 @@ repositories {
 }
 
 dependencies {
+<<<<<<< HEAD
     testImplementation 'junit:junit:4.+'
 }
 
 
+=======
+    implementation 'com.google.guava:guava:28.2-jre'
+
+    testImplementation 'junit:junit:4.12'
+}
+
+application {
+    mainClassName = 'rest.assured.App'
+}
+>>>>>>> df74019f9e8047713481ff6d8f699f46cc748655

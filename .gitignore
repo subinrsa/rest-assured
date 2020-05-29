@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Compiled class file
 *.class
 
@@ -22,11 +23,16 @@
 # VM crash logs
 hs_err_pid*
 
+=======
+>>>>>>> df74019f9e8047713481ff6d8f699f46cc748655
 # Ignore Gradle project-specific cache directory
 .gradle
 
 # Ignore Gradle build output directory
 build
+<<<<<<< HEAD
 
 # Intelli J
 .idea
+=======
+>>>>>>> df74019f9e8047713481ff6d8f699f46cc748655
