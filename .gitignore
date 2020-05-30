@@ -32,3 +32,4 @@ build
 # Intelli J
 .idea
 .classpath
+*.classpath
