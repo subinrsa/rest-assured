@@ -34,7 +34,7 @@ public class UserTest {
 
     @Test
     public void testCreateUserSuccess() {
-        User user = new User("test", "QA");
+        User user = new User("test", "QA", "test@mailinator.com");
         given().
             contentType(ContentType.JSON)
             .body(user).
