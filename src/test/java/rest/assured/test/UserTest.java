@@ -5,6 +5,7 @@ import io.restassured.http.ContentType;
 import org.apache.http.HttpStatus;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import rest.assured.domain.User;
 
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.CoreMatchers.*;
@@ -33,9 +34,10 @@ public class UserTest {
 
     @Test
     public void testCreateUserSuccess() {
+        User user = new User("test", "QA");
         given().
             contentType(ContentType.JSON)
-            .body("{ \"name\": \"test\", \"job\": \"QA\" }").
+            .body(user).
         when().
             post("/users").
         then().
