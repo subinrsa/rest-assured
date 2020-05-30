@@ -1,4 +1,4 @@
-package rest.assured;
+package rest.assured.test;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
