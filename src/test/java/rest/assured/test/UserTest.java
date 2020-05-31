@@ -26,6 +26,24 @@ public class UserTest extends BaseTest{
         }
 
     @Test
+    public void testSizeOfItemsDisplayedAreTheSameAsPerPage() {
+
+        int expectedItemsPerPage = getExpectedItemsPerPage();
+
+        given().
+            params("page", 2).
+        when().
+            get(LIST_USERS_ENDPOINT).
+        then().
+            statusCode(HttpStatus.SC_OK)
+            .body(
+                "page", is(2),
+"data.size()", is(expectedItemsPerPage),
+                    "data.findAll { it.avatar.startsWith('https://s3.amazonaws.com') }.size()", is(expectedItemsPerPage)
+            );
+    }
+
+    @Test
     public void testAbleToCreateNewUser() {
         User user = new User("test", "QA", "test@mailinator.com");
         given().
@@ -40,8 +58,15 @@ public class UserTest extends BaseTest{
             .body("createdAt", is(notNullValue()));
     }
 
-
-
-
+    private int getExpectedItemsPerPage() {
+        return given().
+                params("page", 2).
+                when().
+                get(LIST_USERS_ENDPOINT).
+                then().
+                statusCode(HttpStatus.SC_OK).
+                extract().
+                path("per_page");
+        }
 
     }
