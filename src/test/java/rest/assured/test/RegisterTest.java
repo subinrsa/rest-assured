@@ -14,7 +14,7 @@ public class RegisterTest extends BaseTest {
     private static final String REGISTER_ENDPOINT = "/register";
 
     @Test
-    public void testRegisterUnsuccessful() {
+    public void testUnableToRegisterWhenPasswordMissing() {
         User user = new User();
         user.setEmail("eve.holt@reqres.in");
         given().
@@ -27,7 +27,7 @@ public class RegisterTest extends BaseTest {
     }
 
     @Test
-    public void testRegisterSuccessful() {
+    public void testAbleToRegisterWithValidParams() {
         User user = new User();
         user.setEmail("eve.holt@reqres.in");
         user.setPassword("pistol");

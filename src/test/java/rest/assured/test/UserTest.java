@@ -14,7 +14,7 @@ public class UserTest extends BaseTest{
     private static final String LIST_USERS_ENDPOINT = "/users";
 
     @Test
-    public void testListUserMetadata() {
+    public void testSpecificPageIsDisplayed() {
         given().
             params("page", 2).
         when().
@@ -26,7 +26,7 @@ public class UserTest extends BaseTest{
         }
 
     @Test
-    public void testCreateUserSuccess() {
+    public void testAbleToCreateNewUser() {
         User user = new User("test", "QA", "test@mailinator.com");
         given().
             body(user).
