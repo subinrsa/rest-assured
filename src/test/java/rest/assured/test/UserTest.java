@@ -27,17 +27,17 @@ public class UserTest extends BaseTest{
 
     @Test
     public void testSizeOfItemsDisplayedAreTheSameAsPerPage() {
-
-        int expectedItemsPerPage = getExpectedItemsPerPage();
+        int expectedPage = 2;
+        int expectedItemsPerPage = getExpectedItemsPerPage(expectedPage);
 
         given().
-            params("page", 2).
+            params("page", expectedPage).
         when().
             get(LIST_USERS_ENDPOINT).
         then().
             statusCode(HttpStatus.SC_OK)
             .body(
-                "page", is(2),
+                "page", is(expectedPage),
 "data.size()", is(expectedItemsPerPage),
                     "data.findAll { it.avatar.startsWith('https://s3.amazonaws.com') }.size()", is(expectedItemsPerPage)
             );
@@ -58,14 +58,14 @@ public class UserTest extends BaseTest{
             .body("createdAt", is(notNullValue()));
     }
 
-    private int getExpectedItemsPerPage() {
+    private int getExpectedItemsPerPage(int page) {
         return given().
-                params("page", 2).
-                when().
+                param("page", page).
+            when().
                 get(LIST_USERS_ENDPOINT).
-                then().
+            then().
                 statusCode(HttpStatus.SC_OK).
-                extract().
+            extract().
                 path("per_page");
         }
 
