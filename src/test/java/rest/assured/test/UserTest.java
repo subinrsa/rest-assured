@@ -11,12 +11,14 @@ import static org.hamcrest.CoreMatchers.notNullValue;
 
 public class UserTest extends BaseTest{
 
+    private static final String LIST_USERS_ENDPOINT = "/users";
+
     @Test
     public void testListUserMetadata() {
         given().
             params("page", 2).
         when().
-            get("/users").
+            get(LIST_USERS_ENDPOINT).
         then().
             statusCode(HttpStatus.SC_OK)
             .body("page", is(2))
@@ -29,7 +31,7 @@ public class UserTest extends BaseTest{
         given().
             body(user).
         when().
-            post("/users").
+            post(LIST_USERS_ENDPOINT).
         then().
             statusCode(HttpStatus.SC_CREATED)
             .body("name", is ("test"))

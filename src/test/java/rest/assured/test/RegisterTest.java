@@ -11,6 +11,8 @@ import static org.hamcrest.CoreMatchers.notNullValue;
 
 public class RegisterTest extends BaseTest {
 
+    private static final String REGISTER_ENDPOINT = "/register";
+
     @Test
     public void testRegisterUnsuccessful() {
         User user = new User();
@@ -18,7 +20,7 @@ public class RegisterTest extends BaseTest {
         given().
             body(user).
         when().
-            post("/register").
+            post(REGISTER_ENDPOINT).
         then().
             statusCode(HttpStatus.SC_BAD_REQUEST)
             .body("error", is("Missing password"));
@@ -32,7 +34,7 @@ public class RegisterTest extends BaseTest {
         given().
             body(user).
         when().
-            post("/register").
+            post(REGISTER_ENDPOINT).
         then().
             statusCode(HttpStatus.SC_OK)
             .body("id", is(notNullValue()))
