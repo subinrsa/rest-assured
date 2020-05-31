@@ -16,7 +16,6 @@ public class RegisterTest extends BaseTest {
         User user = new User();
         user.setEmail("eve.holt@reqres.in");
         given().
-            contentType(ContentType.JSON).
             body(user).
         when().
             post("/register").
@@ -31,7 +30,6 @@ public class RegisterTest extends BaseTest {
         user.setEmail("eve.holt@reqres.in");
         user.setPassword("pistol");
         given().
-            contentType(ContentType.JSON).
             body(user).
         when().
             post("/register").

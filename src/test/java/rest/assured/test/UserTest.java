@@ -27,8 +27,7 @@ public class UserTest extends BaseTest{
     public void testCreateUserSuccess() {
         User user = new User("test", "QA", "test@mailinator.com");
         given().
-            contentType(ContentType.JSON)
-            .body(user).
+            body(user).
         when().
             post("/users").
         then().
