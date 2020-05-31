@@ -1,9 +1,7 @@
 package rest.assured.test;
 
-import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import org.apache.http.HttpStatus;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import rest.assured.domain.User;
 
@@ -11,14 +9,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 
-public class RegisterTest {
-
-    @BeforeClass
-    public static void setup() {
-        RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
-        RestAssured.baseURI = "https://reqres.in";
-        RestAssured.basePath = "/api";
-    }
+public class RegisterTest extends BaseTest {
 
     @Test
     public void testRegisterUnsuccessful() {
