@@ -6,12 +6,13 @@ import org.junit.Test;
 import rest.assured.domain.User;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class UserTest extends BaseTest{
 
     private static final String LIST_USERS_ENDPOINT = "/users";
+    private static final String SHOW_USER_ENDPOINT = "/users/{userId}";
 
     @Test
     public void testSpecificPageIsDisplayed() {
@@ -47,7 +48,7 @@ public class UserTest extends BaseTest{
     public void testAbleToCreateNewUser() {
         User user = new User("test", "QA", "test@mailinator.com");
         given().
-            body(user).
+            body(user). // SERIALIZATION
         when().
             post(LIST_USERS_ENDPOINT).
         then().
@@ -56,6 +57,24 @@ public class UserTest extends BaseTest{
             .body("job", is("QA"))
             .body("id", is(notNullValue()))
             .body("createdAt", is(notNullValue()));
+    }
+
+    @Test
+    public void showSpecificUser() {
+        User user = given().
+                        pathParam("userId", 2).
+                    when().
+                        get(SHOW_USER_ENDPOINT).
+            //      thenReturn().as(User.class); // DE-SERIALIZATION
+                    then().
+                    statusCode(HttpStatus.SC_OK).
+            //         body("data", is(notNullValue()));
+                    extract().
+                        body().jsonPath().getObject("data", User.class); // DE-SERIALIZATION
+
+        assertThat(user.getEmail(), containsString("@reqres.in"));
+        assertThat(user.getName(), containsString("Janet"));
+        assertThat(user.getLastName(), containsString("Weaver"));
     }
 
     private int getExpectedItemsPerPage(int page) {
