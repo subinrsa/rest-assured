@@ -33,3 +33,6 @@ build
 .idea
 .classpath
 *.classpath
+
+# Lombok config
+lombok.config

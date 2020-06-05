@@ -46,7 +46,7 @@ public class UserTest extends BaseTest{
 
     @Test
     public void testAbleToCreateNewUser() {
-        User user = new User("test", "QA", "test@mailinator.com");
+        User user = new User("test", "QA", "password","test@mailinator.com", "dude");
         given().
             body(user). // SERIALIZATION
         when().
