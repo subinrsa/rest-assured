@@ -5,6 +5,9 @@ import org.apache.http.HttpStatus;
 import org.junit.Test;
 import rest.assured.domain.User;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -46,7 +49,11 @@ public class UserTest extends BaseTest{
 
     @Test
     public void testAbleToCreateNewUser() {
-        User user = new User("test", "QA", "password","test@mailinator.com", "dude");
+        // User user = new User("test", "QA", "test@mailinator.com","password", "dude");
+        // Instead using HashMap (dictionary)
+        Map<String, String> user = new HashMap<String, String>();
+        user.put("name", "test");
+        user.put("job", "QA");
         given().
             body(user). // SERIALIZATION
         when().

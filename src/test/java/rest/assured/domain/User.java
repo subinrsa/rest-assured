@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-@Data //@Getter
+@Data //@Getter & @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class User {
@@ -13,7 +13,7 @@ public class User {
     private String name;
     private String job;
     private String email;
-    @Setter
+//    @Setter
     private String password;
 
     @JsonAlias("last_name")
@@ -32,21 +32,21 @@ public class User {
 //    }
 //
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+//    public void setEmail(String email) {
+//        this.email = email;
+//    }
 
 //    public void setPassword(String password) {
 //        this.password = password;
 //    }
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+//    public String getLastName() {
+//        return lastName;
+//    }
+//
+//    public void setLastName(String lastName) {
+//        this.lastName = lastName;
+//    }
 
 //    public User() {
 //
